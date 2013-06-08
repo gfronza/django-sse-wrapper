@@ -32,5 +32,5 @@ setup(name='django-sse-wrapper',
       packages=['sse_wrapper',
                 'sse_wrapper.backends'],
       long_description=long_description(),
-      install_requires=['sse>=1.2'],
+      install_requires=['Django>=1.2.5', 'sse>=1.2'],
       zip_safe=False)
