@@ -1,2 +1,4 @@
 .vagrant
 *.pyc
+dist
+django_sse_wrapper.egg-info
