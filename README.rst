@@ -1,11 +1,13 @@
 Django SSE Wrapper
 ==================
 
-Django SSE wrapper is an easy way to implement Server-Sent Events (http://www.html5rocks.com/en/tutorials/eventsource/basics/) in a Django application.
-
+Django SSE wrapper is an easy way to implement Server-Sent Events in a Django application.
+You can find details about SSE at http://www.html5rocks.com/en/tutorials/eventsource/basics/
 
 Installation
 ------------
+
+Installing from PyPI::
 
     $ pip install django-sse-wrapper
 
@@ -74,3 +76,11 @@ Contributing
 ------------
 
 Install `Vagrant <http://www.vagrantup.com/>`_ in order to run the example app and test the code.
+
+
+License
+-------
+BSD License
+
+Note: this project is based on `django-sse <https://github.com/niwibe/django-sse>`_ written by `niwibe <https://github.com/niwibe>`_.
+The reason I started a new project instead of forking is that I decided to change the whole design of the code. I like the idea of omitting the broker from the app code, this way when you decide to change from one broker to another, you just have to change your settings.py.
