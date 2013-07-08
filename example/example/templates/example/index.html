@@ -1,3 +1,5 @@
+{% load url from future %}
+
 <html>
     <head>
         <title>Sample Application</title>
@@ -5,28 +7,21 @@
     <body>
         <h1>This page shows the current course state</h1>
         <span>Current state is:</span> <span id="current-course-state"></span>
+        <button id="start-button">Start course</button>
+        <button id="stop-button">Stop course</button>
     </body>
 
-    <script type="text/javascript" src="{{ STATIC_URL }}/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/lib/klass.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/course.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // check if this browser has SSE capability.
-            if (window.EventSource) {
-                var eventSource = new EventSource("{% url 'course_state_stream' channel_extension='1' %}");
-
-                eventSource.addEventListener("state", function(e) {
-                    $("#current-course-state").html(e.data);
-                });
-            }
-            else {
-                // fallback to xhr polling.
-                setTimeout(function() {
-                    $("#current-course-state").load("{% url 'course_state' course_id=1 %}")
-                }, 2000);
-            }
-
-            // load the current state.
-            $("#current-course-state").load("{% url 'course_state' course_id=1 %}")
+            var courseController = new course.CourseController({
+                courseStreamURL: "{% url 'course_state_stream' channel_extension='1' %}",
+                courseStateURL: "{% url 'course_state' course_id=1 %}",
+                courseStartURL: "{% url 'start_course' course_id=1 %}",
+                courseStopURL: "{% url 'stop_course' course_id=1 %}",
+            });
         });
     </script>
 </html>
