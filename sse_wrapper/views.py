@@ -43,6 +43,7 @@ class EventStreamView(View):
         response = HttpResponse(self._generate_content(),
                                 content_type="text/event-stream")
         response['Cache-Control'] = 'no-cache'
+        response['X-Accel-Buffering'] = 'no'
         response['Software'] = 'django-sse-wrapper'
         return response
 
