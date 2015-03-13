@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from utils import class_from_str
+from sse_wrapper.utils import class_from_str
 
 
 # create a reference to the backend class.

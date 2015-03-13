@@ -12,7 +12,7 @@ except ImportError:
 
 from django.utils.decorators import method_decorator
 
-from utils import class_from_str
+from sse_wrapper.utils import class_from_str
 
 DEFAULT_CHANNEL = getattr(settings, 'SSE_CHANNEL_NAME', 'sse')
 SSE_BACKEND_CLASS = getattr(settings, 'SSE_BACKEND_CLASS')
